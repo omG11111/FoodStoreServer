@@ -1,6 +1,6 @@
 // const { MongoClient } = require("mongodb");
 const app = require("express")();
-// require("dotenv").config();
+require("dotenv").config();
 const mongoose = require("mongoose");
 const bodyParser = require("express").json;
 const port = process.env.PORT || 3000;
