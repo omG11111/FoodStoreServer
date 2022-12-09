@@ -6,6 +6,7 @@ const bodyParser = require("express").json;
 const port = process.env.PORT || 3000;
 const User = require("./models/User");
 const cors = require("cors");
+const pageobj=require("./routes/pageapis")
 // const db=require("./config/db");
 
 mongoose.set("strictQuery", false);
@@ -30,6 +31,7 @@ app.use(cors());
 app.get("/", async (req, res) => {
   res.send("asdfffffffff");
 });
+app.use("/page",pageobj.Router)
 app.post("/any", async (req, res) => {
   // console.log("hitterdddd seccess",req.ip);
 
