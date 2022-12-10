@@ -8,6 +8,7 @@ const User = require("./models/User");
 const cors = require("cors");
 const pageobj=require("./routes/pageapis")
 const mailer=require('express-mailer');
+const gamesRouter=require('./routes/gameslist');
 // const db=require("./config/db");
 app.use(cors());
 mongoose.set("strictQuery", false);
