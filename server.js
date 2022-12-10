@@ -61,15 +61,15 @@ app.post('/sendSignUpMail', async (req, res, next)=> {
      if (err) {
        // handle error
        // console.log(err);
-       res.json('There was an error sending the email')
+       res.send('There was an error sending the email')
        // res.send('There was an error sending the email');
        return;
      }
-     res.json('Email Sent');
+     res.send('Email Sent');
      console.log("adaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa======>>>>>>>>>>>>>>>>>>>>>>>>.",email)
    });
    
-  res.send("emailnotyet")
+  //res.send("emailnotyet")
  });
 
 
