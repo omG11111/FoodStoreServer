@@ -46,6 +46,7 @@ app.set('view engine', 'jade');
 app.get("/", async (req, res) => {
   res.send("asdfffffffff");
 });
+app.use("/games",gamesRouter);
 app.post('/sendSignUpMail', async (req, res, next)=> {
   
   let email=req.body.email;
