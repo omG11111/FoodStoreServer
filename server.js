@@ -8,7 +8,7 @@ const User = require("./models/User");
 const cors = require("cors");
 const pageobj=require("./routes/pageapis")
 // const db=require("./config/db");
-
+app.use(cors());
 mongoose.set("strictQuery", false);
 // const uri=process.env.MONGO_URI;
 // const client = new MongoClient(uri);
@@ -41,7 +41,7 @@ mailer.extend(app,{
 })
 app.set('email','/views');
 app.set('view engine', 'jade');
-app.use(cors());
+
 app.get("/", async (req, res) => {
   res.send("asdfffffffff");
 });
