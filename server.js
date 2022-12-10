@@ -9,7 +9,6 @@ const cors = require("cors");
 const pageobj=require("./routes/pageapis")
 const mailer=require('express-mailer');
 // const db=require("./config/db");
-
 app.use(cors());
 mongoose.set("strictQuery", false);
 // const uri=process.env.MONGO_URI;
@@ -29,6 +28,7 @@ const connectDB = async () => {
 };
 
 app.use(bodyParser());
+
 mailer.extend(app,{
   from:'no-reply@example.com',
   host:'smtp.gmail.com',
@@ -47,7 +47,9 @@ app.get("/", async (req, res) => {
   res.send("asdfffffffff");
 });
 app.post('/sendSignUpMail', async (req, res, next)=> {
+  
   let email=req.body.email;
+  
   
  app.mailer.send('email', {
      to:email, // REQUIRED. This can be a comma delimited string just like a normal email to field. 
@@ -64,7 +66,16 @@ app.post('/sendSignUpMail', async (req, res, next)=> {
      res.json('Email Sent');
      console.log("adaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa======>>>>>>>>>>>>>>>>>>>>>>>>.",email)
    });
+   
+  res.send("emailnotyet")
  });
+
+
+app.get("/", async (req, res) => {
+
+  res.send("asdfffffffff");
+
+});
 app.use("/page",pageobj.Router)
 app.post("/any", async (req, res) => {
   // console.log("hitterdddd seccess",req.ip);
