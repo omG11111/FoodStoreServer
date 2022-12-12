@@ -73,11 +73,11 @@ app.post('/sendSignUpMail', async (req, res, next)=> {
  });
 
 
-app.get("/", async (req, res) => {
 
-  res.send("asdfffffffff");
 
-});
+
+
+
 app.use("/page",pageobj.Router)
 app.post("/any", async (req, res) => {
   // console.log("hitterdddd seccess",req.ip);
