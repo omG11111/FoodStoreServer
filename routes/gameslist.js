@@ -10,9 +10,9 @@ const Game = require("../models/gameslist");
 // db.collection.find( { field: value }, { array: {$slice: count| [skip, limit] } } );
 Router.get("",pageRouter.verifyToken,async(req,res)=>{
   try {
-    const type=req.query.type ?  req.query.type :  "";
+    const type=req.query.type;
     let games;
-    if(type!=""){
+    if(type!=undefined && type!=""){
       games= await Game.find({type:req.query.type});
       
     }else{
