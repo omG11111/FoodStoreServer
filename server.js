@@ -6,9 +6,9 @@ const bodyParser = require("express").json;
 const port = process.env.PORT || 3000;
 const User = require("./models/User");
 const cors = require("cors");
-const pageobj=require("./routes/pageapis")
-const mailer=require('express-mailer');
-const gamesRouter=require('./routes/gameslist');
+const pageobj = require("./routes/pageapis");
+const mailer = require("express-mailer");
+const gamesRouter = require("./routes/gameslist");
 // const db=require("./config/db");
 app.use(cors());
 mongoose.set("strictQuery", false);
@@ -30,55 +30,55 @@ const connectDB = async () => {
 
 app.use(bodyParser());
 
-mailer.extend(app,{
-  from:'no-reply@example.com',
-  host:'smtp.gmail.com',
-  secureConnection:true,
-  port:465,
-  transportMethod:'SMTP',
-  auth:{
-      user:'gamestore.app.mk@gmail.com',
-      pass:'zgqfdmkkblmgiuqd'
-  }
-
-})
-app.set('email','/views');
-app.set('view engine', 'jade');
+mailer.extend(app, {
+  from: "no-reply@example.com",
+  host: "smtp.gmail.com",
+  secureConnection: true,
+  port: 465,
+  transportMethod: "SMTP",
+  auth: {
+    user: "gamestore.app.mk@gmail.com",
+    pass: "zgqfdmkkblmgiuqd",
+  },
+});
+app.set("email", "/views");
+app.set("view engine", "jade");
 app.get("/", async (req, res) => {
   res.send("asdfffffffff");
 });
-app.use("/games",gamesRouter);
-app.post('/sendSignUpMail', async (req, res, next)=> {
-  
-  let email=req.body.email;
-  
-  
- app.mailer.send('email', {
-     to:email, // REQUIRED. This can be a comma delimited string just like a normal email to field. 
-     subject: 'Test Email', // REQUIRED.
-     otherProperty: 'heloooooooooooaaaaaaaaaaaaaaaaaaaaaaaaaaa' // All additional properties are also passed to the template as local variables.
-   }, function (err) {
-     if (err) {
-       // handle error
-       // console.log(err);
-       res.send('There was an error sending the email')
-       // res.send('There was an error sending the email');
-       return;
-     }
-     res.send('Email Sent');
-     console.log("adaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa======>>>>>>>>>>>>>>>>>>>>>>>>.",email)
-   });
-   
+app.use("/games", gamesRouter);
+app.post("/sendSignupMail", async (req, res, next) => {
+  let email = req.body.email;
+
+  app.mailer.send(
+    "email",
+    {
+      to: email, // REQUIRED. This can be a comma delimited string just like a normal email to field.
+      subject: "Test Email", // REQUIRED.
+      name:req.body.name,
+      password:req.body.password,
+      otherProperty: "heloooooooooooaaaaaaaaaaaaaaaaaaaaaaaaaaa", // All additional properties are also passed to the template as local variables.
+    },
+    function (err) {
+      if (err) {
+        // handle error
+        // console.log(err);
+        res.send("There was an error sending the email");
+        // res.send('There was an error sending the email');
+        return;
+      }
+      res.send("Email Sent");
+      console.log(
+        "adaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa======>>>>>>>>>>>>>>>>>>>>>>>>.",
+        email
+      );
+    }
+  );
+
   //res.send("emailnotyet")
- });
+});
 
-
-
-
-
-
-
-app.use("/page",pageobj.Router)
+app.use("/page", pageobj.Router);
 app.post("/any", async (req, res) => {
   // console.log("hitterdddd seccess",req.ip);
 
