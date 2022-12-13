@@ -10,18 +10,18 @@ const Game = require("../models/gameslist");
 // db.collection.find( { field: value }, { array: {$slice: count| [skip, limit] } } );
 Router.get("",pageRouter.verifyToken,async(req,res)=>{
   try {
-    let games= await Game.find({type:req.query.type});
+    const type=req.query.type;
+    let games;
+    if(type && type!=""){
+      games= await Game.find({type:req.query.type});
+      
+    }else{
+      games= await Game.find({});
+
+    }
     const limit=req.query.limit;
     const total=games.length;
     if(limit && limit!=0){
-      // if(limit>total){
-      //   games=games.slice(0,total);
-        
-        
-      // }else{
-
-      //   games=games.slice(0,limit);
-      // }
       games=games.slice(0,limit);
     }else{
       games=games.slice(0,0);
