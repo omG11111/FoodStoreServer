@@ -6,10 +6,15 @@
    <body>
     sdaffff
     <script src = "/socket.io/socket.io.js"></script>
+    <button id="btn" onclick="">btn</button>
 
    
     <script>
        const socket = io();
+       document.getElementById("btn").addEventListener("click",()=>{
+        socket.emit("message",{madad:"asdasdasdasd"})
+
+       })
     </script>    
 </body>
 </html>

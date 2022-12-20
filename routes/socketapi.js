@@ -68,6 +68,10 @@ io.on('connection', (socket) => {
   socket.on('disconnect',()=>{
 
     console.log('A user disconnected');
+  });
+  socket.on("message",(ms)=>{
+    console.log("clint to server",ms);
+
   })
 });
 
