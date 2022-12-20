@@ -106,7 +106,7 @@ app.post("/any", async (req, res) => {
 // })
 connectDB().then(() => {
   app.listen(port, () => {
-    console.log("listening for requests");
+    console.log("listening for requests",port);
   });
 });
 // connectDB().then(() => {
