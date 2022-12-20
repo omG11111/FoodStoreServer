@@ -1,4 +1,5 @@
 // const { MongoClient } = require("mongodb");
+require("./routes/socketapi");
 const app = require("express")();
 require("dotenv").config();
 const mongoose = require("mongoose");
@@ -108,3 +109,8 @@ connectDB().then(() => {
     console.log("listening for requests");
   });
 });
+// connectDB().then(() => {
+//   app.listen(3001, () => {
+//     console.log("listening for requests");
+//   });
+// });
