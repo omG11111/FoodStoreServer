@@ -48,10 +48,10 @@ const app2 = express();
 const http = require('http');
 const server = http.createServer(app2);
 const { Server } = require("socket.io");
-const io = new Server(server);
-// const io = new Server(server,{cors: {
-//   origins: ['http://localhost:4200']
-// }});
+// const io = new Server(server);
+const io = new Server(server,{cors: {
+  origins: ['http://localhost:4200']
+}});
 const socketport =process.env.SOCKET_PORT || 3020;
 const path =require("path");
 //or
