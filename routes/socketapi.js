@@ -73,6 +73,16 @@ io.on('connection', (socket) => {
     console.log("clint to server",ms);
 
   })
+  let romm="not";
+  socket.adapter.on("create-room",(room)=>{
+    console.log(`room ${room} was created`);
+    romm=room
+  })
+  socket.join("room-"+"12")
+  socket.join("room-"+"1")
+  io.sockets.to("room-"+"1").emit('connectToRoom', "You are in room no.1 "+romm+"1"+"ID"+socket.id);
+
+  io.sockets.to("room-"+"12").emit('connectToRoom', "You are in room no.12 "+romm+"1"+"ID"+socket.id);
 });
 
 server.listen(socketport, () => {
