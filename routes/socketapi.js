@@ -53,7 +53,7 @@ const { Server } = require("socket.io");
 // const io = new Server(server);
 const io = new Server(server,{cors: {
   origins: ['*']
-}});
+},pingTimeout: 60000});
 const porrt =process.env.PORT || 3021;
 const socketport =process.env.SOCKET_PORT || 3020;
 const path =require("path");
