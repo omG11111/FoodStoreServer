@@ -266,9 +266,10 @@ connectDB().then(() => {
   });
 });
 
-require("./routes/socketapi");
+// require("./routes/socketapi");
 // connectDB().then(() => {
 //   app.listen(3001, () => {
 //     console.log("listening for requests");
 //   });
 // });
+module.exports=app

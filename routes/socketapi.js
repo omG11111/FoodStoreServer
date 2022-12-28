@@ -42,11 +42,13 @@
 
 
 // Router.get
+
+const appp=require('../server');
 const express = require('express');
 const Router=express.Router();
-const app2 = express();
+// const app2 = express();
 const http = require('http');
-const server = http.createServer();
+const server = http.createServer(appp);
 const { Server } = require("socket.io");
 // const io = new Server(server);
 const io = new Server(server,{cors: {
