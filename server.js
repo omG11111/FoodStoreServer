@@ -260,11 +260,11 @@ app.post("/any", async (req, res) => {
 // app.listen(port,()=>{
 //     console.log(`alive at ${port}`);
 // })
-connectDB().then(() => {
-  app.listen(port, () => {
-    console.log("listening for requests",port);
-  });
-});
+// connectDB().then(() => {
+//   app.listen(port, () => {
+//     console.log("listening for requests",port);
+//   });
+// });
 
 // require("./routes/socketapi");
 // connectDB().then(() => {
@@ -272,4 +272,4 @@ connectDB().then(() => {
 //     console.log("listening for requests");
 //   });
 // });
-module.exports=app
+module.exports={app,connectDB}
