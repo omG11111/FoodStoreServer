@@ -52,7 +52,7 @@ const server = http.createServer(appp);
 const { Server } = require("socket.io");
 // const io = new Server(server);
 const io = new Server(server,{cors: {
-  // origins: ['http://localhost:4200']
+  origins: ['http://localhost:4200']
 }});
 const socketport =process.env.PORT || 3020;
 const path =require("path");
