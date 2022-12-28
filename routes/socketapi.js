@@ -46,7 +46,7 @@ const express = require('express');
 const Router=express.Router();
 const app2 = express();
 const http = require('http');
-const server = http.createServer(app2);
+const server = http.createServer();
 const { Server } = require("socket.io");
 // const io = new Server(server);
 const io = new Server(server,{cors: {
@@ -62,11 +62,11 @@ socketname.use((socket, next) => {
   next();
 });
 
-app2.get('/', (req, res) => {
-    console.log("asdasd");
-    console.log(path.join(__dirname, '../index.html'));
-  res.sendFile(path.join(__dirname, '../index.html'));
-});
+// app2.get('/', (req, res) => {
+//     console.log("asdasd");
+//     console.log(path.join(__dirname, '../index.html'));
+//   res.sendFile(path.join(__dirname, '../index.html'));
+// });
 
 socketname.on('connection', (socket) => {
   console.log('a user connected');
